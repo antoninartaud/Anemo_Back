@@ -20,6 +20,7 @@
   "homepage": "https://github.com/antoninartaud/Anemo_Back#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "express-router": "0.0.1",
     "mongoose": "^5.13.0",
     "nodemon": "^2.0.8"
   }
