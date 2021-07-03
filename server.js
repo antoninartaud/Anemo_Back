@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require("mongoose");
 const questionRoutes = require("./routes/questionRoutes")
+const authRoutes = require("./routes/authRoutes")
 
 
 const { port, mongoURL } = require("./config")
@@ -18,7 +19,8 @@ const app = express();
 app.use(express.json())
 
 
-app.use("/admin",questionRoutes)
+app.use("/admin", questionRoutes)
+app.use("/signup", authRoutes)
 
 
 
