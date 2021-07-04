@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const questionModel = require('./models/questionModel');
+const userModel = require("./models/userModel")
 const { mongoURL } = require('./config');
+const bcryptjs = require("bcryptjs")
 
 mongoose.connect(
   mongoURL,
@@ -86,7 +88,7 @@ const addQuestions = async () => {
   }
 };
 
-// addQuestions();
+addQuestions();
 
 const displayQuestions = async () => {
   try {
@@ -99,4 +101,31 @@ const displayQuestions = async () => {
   }
 };
 
-displayQuestions();
+// displayQuestions();
+
+
+
+
+const addAdmin = async () => {
+  try {
+    await userModel.deleteMany({});
+
+    const passwordHashed = bcryptjs.hashSync("Anemo1")
+
+    const questions = await userModel.insertMany([
+      {
+        name: "Juan",
+        email: "contact@anemo-cq.fr",
+        password: passwordHashed,
+        role: 1
+      }
+    ])
+
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+// addAdmin()
+
+
