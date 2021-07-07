@@ -1,10 +1,10 @@
 const express = require("express")
 const { getQuestion, addQuestion, updateQuestion, deletedQuestion, questionList } = require("../controllers/questionsController")
-const { verifyToken, onlyAdmin } = require("../middlewares/authMiddleware's")
+const { verifyToken, onlyAdmin } = require("../middlewares/authMiddlewares")
 const router = express.Router()
 
 // route pour afficher la liste des question 
-router.get("/", questionList)
+router.get("/",verifyToken, questionList)
 
 // route pour afficher une question 
 router.get("/:id", verifyToken, onlyAdmin, getQuestion)

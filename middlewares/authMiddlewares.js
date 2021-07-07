@@ -27,10 +27,12 @@ const continueIfUserExists = async (req, res, next) => {
 // pour verifier si le token est bon 
 
 const verifyToken = async (req, res, next) => {
-    try {
+    try { 
+        console.log("dd",req.headers.authorization)
         const token = req.headers.authorization.split(" ")[1]
 
         const result = jwt.verify(token, config.secret)
+       
 
         if (result.id) {
             const user = await userModel.findById(result.id).lean()

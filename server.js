@@ -2,9 +2,12 @@ const express = require('express');
 const mongoose = require("mongoose");
 const questionRoutes = require("./routes/questionRoutes")
 const authRoutes = require("./routes/authRoutes")
+const reponsesRoute=require("./routes/responseRoute")
+const cors = require("cors")
 
 
-const { port, mongoURL } = require("./config")
+const { port, mongoURL } = require("./config");
+const responseModel = require('./models/responsesModel');
 
 mongoose.connect(mongoURL, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
   if (err) {
@@ -16,11 +19,14 @@ mongoose.connect(mongoURL, { useNewUrlParser: true, useUnifiedTopology: true }, 
 
 
 const app = express();
+app.use(cors())
 app.use(express.json())
 
 
 app.use("/admin", questionRoutes)
 app.use("/signup", authRoutes)
+app.use("/response",reponsesRoute)
+
 
 
 
