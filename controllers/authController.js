@@ -21,9 +21,11 @@ const signup = async (req, res) => {
 const login = async (req, res) => {
     try {
         const user = req.user
-        console.log(req.user)
+        
+        console.log("user",user)
 
         const result = bcryptjs.compareSync(req.body.password, user.password)
+        const role = user.role
 
         if (result) {
             const token = jwt.sign(
@@ -34,7 +36,7 @@ const login = async (req, res) => {
                     expiresIn: 60 * 60
                 })
 
-            res.json({ message: "You're now connected", token })
+            res.json({ message: "You're now connected", token ,role})
         } else {
             res.status(401).json({ message: "Login failed" })
         }
