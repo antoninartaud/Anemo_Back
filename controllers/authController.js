@@ -22,7 +22,7 @@ const login = async (req, res) => {
     try {
         const user = req.user
         
-        console.log("user",user)
+        
 
         const result = bcryptjs.compareSync(req.body.password, user.password)
         const role = user.role
