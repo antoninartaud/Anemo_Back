@@ -86,7 +86,7 @@ const addQuestions = async () => {
   }
 };
 
-// addQuestions();
+addQuestions();
 
 const displayQuestions = async () => {
   try {
@@ -99,4 +99,4 @@ const displayQuestions = async () => {
   }
 };
 
-displayQuestions();
+// displayQuestions();
