@@ -25,8 +25,7 @@ const addQuestion = async (req, res) => {
 // afficher les questions
 const questionList = async (req, res) => {
     try {
-        console.log(req.user)
-        // const user = req.user._id
+        
         const questionList = await questionModel.find({ deleted: false }, { questionText: 1 })
         
         res.json({
