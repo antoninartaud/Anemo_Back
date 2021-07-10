@@ -1,9 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const questionRoutes = require('./routes/questionRoutes');
+const authRoutes = require('./routes/authRoutes');
+const reponsesRoute = require('./routes/responseRoute');
 const cors = require('cors');
 
 const { port, mongoURL } = require('./config');
+const responseModel = require('./models/responsesModel');
 
 mongoose.connect(
   mongoURL,
@@ -18,8 +21,12 @@ mongoose.connect(
 );
 
 const app = express();
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
+
+app.use('/admin', questionRoutes);
+app.use('/signup', authRoutes);
+app.use('/response', reponsesRoute);
 
 app.use('/admin', questionRoutes);
 

@@ -1,17 +1,22 @@
 const express = require("express")
 const { getQuestion, addQuestion, updateQuestion, deletedQuestion, questionList } = require("../controllers/questionsController")
+const { verifyToken, onlyAdmin } = require("../middlewares/authMiddlewares")
 const router = express.Router()
 
+// route pour afficher la liste des question 
+router.get("/",verifyToken, questionList)
 
-router.get("/",questionList)
+// route pour afficher une question 
+router.get("/:id", verifyToken, onlyAdmin, getQuestion)
 
-router.get("/:id",getQuestion)
+// route pour ajouter une question 
+router.post("/", verifyToken, onlyAdmin, addQuestion)
 
-router.post("/",addQuestion)
+// route pour modifier une question 
+router.patch("/:id", verifyToken, onlyAdmin, updateQuestion)
 
-router.patch("/:id",updateQuestion)
-
-router.delete("/:id",deletedQuestion)
+// route pour effacer une question
+router.delete("/:id", verifyToken, onlyAdmin, deletedQuestion)
 
 
 
