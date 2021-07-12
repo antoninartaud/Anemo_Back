@@ -8,9 +8,18 @@ const signup = async (req, res) => {
         const { email, name, password } = req.body
         const passwordHashed = bcryptjs.hashSync(password)
 
-        const user = await userModel.create({ email, password: passwordHashed, name })
 
-        res.json({ message: `${user.name} was created`, id: user._id })
+        const user = await userModel.create({ email, password: passwordHashed, name })
+        // console.log('req.body', user)
+
+        const token = jwt.sign(
+            {
+                id: user._id
+            }, config.secret,
+            {
+                expiresIn: 60 * 60
+            })
+        res.json({ message: `${user.name} was created`, id: user._id, role: user.role, token })
     } catch (error) {
         console.log("Error: ", error)
         res.status(500).json({ message: "There was an error while treating the request" })
@@ -21,8 +30,8 @@ const signup = async (req, res) => {
 const login = async (req, res) => {
     try {
         const user = req.user
-        
-        
+
+
 
         const result = bcryptjs.compareSync(req.body.password, user.password)
         const role = user.role
@@ -36,7 +45,7 @@ const login = async (req, res) => {
                     expiresIn: 60 * 60
                 })
 
-            res.json({ message: "You're now connected", token ,role})
+            res.json({ message: "You're now connected", token, role })
         } else {
             res.status(401).json({ message: "Login failed" })
         }

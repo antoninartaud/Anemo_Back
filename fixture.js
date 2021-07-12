@@ -88,7 +88,7 @@ const addQuestions = async () => {
   }
 };
 
-addQuestions();
+// addQuestions();
 
 const displayQuestions = async () => {
   try {
@@ -107,7 +107,7 @@ const addAdmin = async () => {
   try {
     await userModel.deleteMany({});
 
-    const passwordHashed = bcryptjs.hashSync("Anemo1")
+    const passwordHashed = bcryptjs.hashSync("Anemo1@")
 
     const questions = await userModel.insertMany([
       {
