@@ -24,13 +24,13 @@ const questionList = async (req, res) => {
       { deleted: false },
       { questionText: 1 }
     );
+
     res.json({
       questionList,
-      userId:req.user._id
-      
-  })
+      userId: req.user._id,
+    });
   } catch (error) {
-    console.erro(error);
+    console.error(error);
     res.json({
       message: 'there is a problem',
     });
