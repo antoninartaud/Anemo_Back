@@ -6,7 +6,6 @@ const reponsesRoute = require('./routes/responseRoute');
 const cors = require('cors');
 
 const { port, mongoURL } = require('./config');
-const responseModel = require('./models/responsesModel');
 
 mongoose.connect(
   mongoURL,

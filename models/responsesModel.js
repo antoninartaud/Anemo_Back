@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-// TODO vérification responseModel
 const responseSchema = new mongoose.Schema({
   responseValue: { type: Number, required: true },
   questionId: { type: mongoose.Types.ObjectId, ref: 'questions' },

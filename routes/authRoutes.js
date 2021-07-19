@@ -4,11 +4,9 @@ const { continueIfUserExists } = require("../middlewares/authMiddlewares")
 const { validationSignup, validationLogin } = require("../middlewares/validationsMiddlewares")
 const router = express.Router()
 
-// route post pour s'inscrire
 
 router.post("/signup", validationSignup, signup)
 
-// route post pour se connecter
 
 router.post("/login", continueIfUserExists, validationLogin, login)
 
