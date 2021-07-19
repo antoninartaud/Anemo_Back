@@ -8,9 +8,7 @@ const signup = async (req, res) => {
         const { email, name, password } = req.body
         const passwordHashed = bcryptjs.hashSync(password)
 
-
         const user = await userModel.create({ email, password: passwordHashed, name })
-        // console.log('req.body', user)
 
         const token = jwt.sign(
             {
@@ -30,9 +28,6 @@ const signup = async (req, res) => {
 const login = async (req, res) => {
     try {
         const user = req.user
-
-
-
         const result = bcryptjs.compareSync(req.body.password, user.password)
         const role = user.role
 

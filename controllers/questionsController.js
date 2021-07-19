@@ -1,6 +1,5 @@
 const questionModel = require('../models/questionModel');
 
-// ajouter une question
 const addQuestion = async (req, res) => {
   try {
     const question = req.body;
@@ -17,7 +16,6 @@ const addQuestion = async (req, res) => {
   }
 };
 
-// afficher les questions
 const questionList = async (req, res) => {
   try {
     const questionList = await questionModel.find(
@@ -37,7 +35,6 @@ const questionList = async (req, res) => {
   }
 };
 
-// utilitaire cette route n'est pas obligatoire
 const getQuestion = async (req, res) => {
   try {
     const id = req.params.id;
@@ -58,7 +55,6 @@ const getQuestion = async (req, res) => {
   }
 };
 
-// modifier la question
 const updateQuestion = async (req, res) => {
   try {
     const id = req.params.id;
@@ -80,7 +76,6 @@ const updateQuestion = async (req, res) => {
   }
 };
 
-// Supprimer une question
 const deletedQuestion = async (req, res) => {
   try {
     const id = req.params.id;

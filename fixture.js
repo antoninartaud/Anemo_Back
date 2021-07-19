@@ -82,7 +82,6 @@ const addQuestions = async () => {
       },
     ]);
 
-    // console.log(questions);
   } catch (error) {
     console.error(error);
   }
@@ -95,7 +94,6 @@ const displayQuestions = async () => {
     const questions = await questionModel.find({});
 
     console.log('questions', questions);
-    // console.log('questions 1st', questions[1]);
   } catch (error) {
     console.log(error);
   }

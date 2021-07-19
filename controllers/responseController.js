@@ -5,7 +5,7 @@ const responseModel =require("../models/responsesModel")
 
 const postResponse = async (req, res) => {
     try {
-        console.log(req.body)
+        
         
         const responseReq = req.body
                 
